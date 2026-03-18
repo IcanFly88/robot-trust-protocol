@@ -1,0 +1,10 @@
+{
+  "$schema": "https://robot-trust.org/schema/robots-trust-v1.json",
+  "robot_trust_version": "1.0",
+  "protocol": "https://robot-trust.org/protocol",
+  "ai_policy": {
+    "agents": "allowed",
+    "training": "allowed",
+    "scraping": "allowed"
+  }
+}

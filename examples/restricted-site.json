@@ -1,0 +1,30 @@
+{
+  "$schema": "https://robot-trust.org/schema/robots-trust-v1.json",
+  "robot_trust_version": "1.0",
+  "protocol": "https://robot-trust.org/protocol",
+
+  "ai_policy": {
+    "agents": "restricted",
+    "training": "denied",
+    "scraping": "denied"
+  },
+
+  "trust_status": {
+    "certificate_status": "self-declared",
+    "trust_level": "basic"
+  },
+
+  "site_identity": {
+    "site_name": "Protected News Site",
+    "domain": "example-news.com",
+    "owner_type": "company",
+    "purpose": "Subscription news content"
+  },
+
+  "ai_training": {
+    "training_allowed": false,
+    "commercial_training_allowed": false,
+    "scraping_allowed": false,
+    "attribution_required": true
+  }
+}

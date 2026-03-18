@@ -1,0 +1,45 @@
+{
+  "$schema": "https://robot-trust.org/schema/robots-trust-v1.json",
+  "robot_trust_version": "1.0",
+  "protocol": "https://robot-trust.org/protocol",
+
+  "ai_policy": {
+    "agents": "allowed",
+    "training": "restricted",
+    "scraping": "limited"
+  },
+
+  "trust_status": {
+    "certificate_status": "verified",
+    "certificate_issuer": "robot-trust.org",
+    "trust_level": "pro",
+    "issued": "2026-03-18",
+    "expires": "2027-03-18"
+  },
+
+  "site_identity": {
+    "site_name": "Example Corp",
+    "domain": "example.com",
+    "language": "en",
+    "owner_type": "company",
+    "purpose": "B2B SaaS platform"
+  },
+
+  "access_points": {
+    "preferred_entry": "/ai/",
+    "robot_safe_endpoints": ["/ai/", "/api/", "/data/"],
+    "rate_limit_policy": "ai-friendly"
+  },
+
+  "ai_training": {
+    "training_allowed": false,
+    "commercial_training_allowed": false,
+    "scraping_allowed": true,
+    "attribution_required": true
+  },
+
+  "update": {
+    "last_updated": "2026-03-18",
+    "expires": "2027-03-18"
+  }
+}
