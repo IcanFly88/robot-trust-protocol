@@ -1,0 +1,121 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://robot-trust.org/schema/robots-trust-v1.json",
+    "title": "Robot Trust Certificate",
+    "description": "Schema for the robots-trust.json standard v1.0. Place at /.well-known/robots-trust.json.",
+    "type": "object",
+    "required": [
+        "robot_trust_version"
+    ],
+    "properties": {
+        "robot_trust_version": {
+            "type": "string",
+            "description": "Version of the Robot Trust standard.",
+            "enum": ["1.0"]
+        },
+        "schema": {
+            "type": "string",
+            "description": "URL of the JSON schema used to validate this file.",
+            "format": "uri"
+        },
+        "protocol": {
+            "type": "string",
+            "description": "URL of the human-readable protocol specification.",
+            "format": "uri"
+        },
+        "ai_policy": {
+            "type": "object",
+            "description": "Simplified AI policy block for easy agent parsing.",
+            "properties": {
+                "agents": {
+                    "type": "string",
+                    "description": "Whether AI agents may interact with this site.",
+                    "enum": ["allowed", "restricted", "denied"]
+                },
+                "training": {
+                    "type": "string",
+                    "description": "Whether content may be used for AI training.",
+                    "enum": ["allowed", "restricted", "denied"]
+                },
+                "scraping": {
+                    "type": "string",
+                    "description": "Whether automated scraping is permitted.",
+                    "enum": ["allowed", "limited", "denied"]
+                }
+            }
+        },
+        "trust_status": {
+            "type": "object",
+            "description": "Certificate trust level and status.",
+            "properties": {
+                "certificate_status": {
+                    "type": "string",
+                    "enum": ["verified", "pending", "self-declared", "revoked"]
+                },
+                "certificate_issuer": {
+                    "type": "string",
+                    "description": "Who issued the certificate."
+                },
+                "trust_level": {
+                    "type": "string",
+                    "enum": ["basic", "pro", "enterprise", "authority"]
+                },
+                "issued": {
+                    "type": "string",
+                    "description": "ISO 8601 date.",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                },
+                "expires": {
+                    "type": "string",
+                    "description": "ISO 8601 date.",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                }
+            }
+        },
+        "site_identity": {
+            "type": "object",
+            "description": "Identification of the site.",
+            "properties": {
+                "site_name": { "type": "string" },
+                "domain": { "type": "string" },
+                "language": { "type": "string" },
+                "owner_type": {
+                    "type": "string",
+                    "enum": ["company", "individual", "nonprofit", "robot-operator", "ai-platform"]
+                },
+                "purpose": { "type": "string" }
+            }
+        },
+        "access_points": {
+            "type": "object",
+            "properties": {
+                "preferred_entry": { "type": "string" },
+                "robot_safe_endpoints": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                },
+                "rate_limit_policy": {
+                    "type": "string",
+                    "enum": ["ai-friendly", "standard", "strict"]
+                }
+            }
+        },
+        "ai_training": {
+            "type": "object",
+            "description": "Detailed AI training permission flags.",
+            "properties": {
+                "training_allowed": { "type": "boolean" },
+                "commercial_training_allowed": { "type": "boolean" },
+                "scraping_allowed": { "type": "boolean" },
+                "attribution_required": { "type": "boolean" }
+            }
+        },
+        "update": {
+            "type": "object",
+            "properties": {
+                "last_updated": { "type": "string" },
+                "expires": { "type": "string" }
+            }
+        }
+    }
+}
